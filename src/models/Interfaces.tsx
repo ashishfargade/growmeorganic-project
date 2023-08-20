@@ -1,5 +1,5 @@
-export interface PersonInterface{
-    name: string
-    phone: number
-    email: string
-}
+export type Person = {
+    name: string;
+    phone: number;
+    email: string;
+};

@@ -15,7 +15,7 @@ export default function Header() {
             component="div"
             sx={{ flexGrow: 1, textAlign: "left", px: 2 }}
           >
-            Current Page
+            GrowMeOrganic
           </Typography>
         </Toolbar>
       </AppBar>

@@ -8,12 +8,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-
-type Person = {
-  name: string;
-  phone: number;
-  email: string;
-};
+import { Person } from "../models/Interfaces";
 
 export const Form: React.FC = () => {
   const [person, setPerson] = useState<Person>({
@@ -30,9 +25,21 @@ export const Form: React.FC = () => {
     }));
   };
 
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    setTimeout(function () {
+      localStorage.setItem("datakey", JSON.stringify(person));
+    }, 2000);
+
+    setTimeout(function () {
+      console.log(localStorage.getItem("datakey"));
+    }, 2000);
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Container sx={{ display: "flex", justifyContent: "center" }}>
           <Paper
             elevation={6}
@@ -58,7 +65,7 @@ export const Form: React.FC = () => {
               <Typography variant="h4" color="initial">
                 User Info
               </Typography>
-
+              
               <TextField
                 id="name-input"
                 type="text"
@@ -68,6 +75,7 @@ export const Form: React.FC = () => {
                 required
                 onChange={handleChange}
               />
+
               <TextField
                 id="phone-input"
                 type="number"
@@ -101,9 +109,6 @@ export const Form: React.FC = () => {
 
               <Button
                 type="submit"
-                onClick={() => {
-                  console.log(person);
-                }}
                 variant="outlined"
                 sx={{ width: 90, display: "flex", alignSelf: "center" }}
               >
