@@ -9,16 +9,14 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Person } from "../models/Interfaces";
-import { useNavigate } from "react-router-dom"
-import { red } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   setUserExists: Dispatch<SetStateAction<boolean>>;
   invalidTry: boolean;
-}
+};
 
 export const Form: React.FC<Props> = (props: Props) => {
-
   const [person, setPerson] = useState<Person>({
     name: "",
     phone: 0,
@@ -39,13 +37,11 @@ export const Form: React.FC<Props> = (props: Props) => {
     e.preventDefault();
 
     localStorage.setItem("datakey", JSON.stringify(person));
+    //Saving data to local storage
+    console.log(localStorage.getItem("datakey"));
 
-    setTimeout(function () {
-      console.log(localStorage.getItem("datakey"));
-    }, 2000);
-
-    props.setUserExists(true)
-    navigate('/secondPage')
+    props.setUserExists(true);
+    navigate("/secondPage");
   };
 
   return (
@@ -119,13 +115,13 @@ export const Form: React.FC<Props> = (props: Props) => {
                 }}
               />
 
-              {props.invalidTry ?
-                <Typography color={'red'} >
+              {props.invalidTry ? (
+                <Typography color={"red"}>
                   Please enter details first
-                </Typography> 
-                : 
+                </Typography>
+              ) : (
                 <></>
-              }
+              )}
 
               <Button
                 type="submit"
@@ -134,7 +130,6 @@ export const Form: React.FC<Props> = (props: Props) => {
               >
                 Submit
               </Button>
-
             </Stack>
           </Paper>
         </Container>
