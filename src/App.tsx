@@ -10,6 +10,7 @@ function App() {
   // if user tries to access 2nd page without entering details, 
   // redirect to first page with error message
 
+
   return (
     <>
       <BrowserRouter>
@@ -26,7 +27,6 @@ function App() {
             path="/secondPage"
             element={
               <SecondPage
-                userExists={userExists}
                 setInvalidTry={setInvalidTry}
               />
             }

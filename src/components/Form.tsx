@@ -40,7 +40,7 @@ export const Form: React.FC<Props> = (props: Props) => {
     //Saving data to local storage
     console.log(localStorage.getItem("datakey"));
 
-    props.setUserExists(true);
+    //props.setUserExists(true);
     navigate("/secondPage");
   };
 
