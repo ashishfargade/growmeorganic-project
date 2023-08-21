@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 export default function Header() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{bgcolor: 'black'}}>
+      <AppBar position="static" sx={{ bgcolor: "black" }}>
         <Toolbar>
           <img src="src\assets\rocket-logo.png" />
 

@@ -7,15 +7,25 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Person } from "../models/Interfaces";
+import { useNavigate } from "react-router-dom"
+import { red } from "@mui/material/colors";
 
-export const Form: React.FC = () => {
+type Props = {
+  setUserExists: Dispatch<SetStateAction<boolean>>;
+  invalidTry: boolean;
+}
+
+export const Form: React.FC<Props> = (props: Props) => {
+
   const [person, setPerson] = useState<Person>({
     name: "",
     phone: 0,
     email: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -28,13 +38,14 @@ export const Form: React.FC = () => {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    setTimeout(function () {
-      localStorage.setItem("datakey", JSON.stringify(person));
-    }, 2000);
+    localStorage.setItem("datakey", JSON.stringify(person));
 
     setTimeout(function () {
       console.log(localStorage.getItem("datakey"));
     }, 2000);
+
+    props.setUserExists(true)
+    navigate('/secondPage')
   };
 
   return (
@@ -65,7 +76,7 @@ export const Form: React.FC = () => {
               <Typography variant="h4" color="initial">
                 User Info
               </Typography>
-              
+
               <TextField
                 id="name-input"
                 type="text"
@@ -98,6 +109,7 @@ export const Form: React.FC = () => {
                 name="email"
                 fullWidth
                 onChange={handleChange}
+                required
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -107,6 +119,14 @@ export const Form: React.FC = () => {
                 }}
               />
 
+              {props.invalidTry ?
+                <Typography color={'red'} >
+                  Please enter details first
+                </Typography> 
+                : 
+                <></>
+              }
+
               <Button
                 type="submit"
                 variant="outlined"
@@ -114,6 +134,7 @@ export const Form: React.FC = () => {
               >
                 Submit
               </Button>
+
             </Stack>
           </Paper>
         </Container>
