@@ -5,7 +5,6 @@ import { SecondPage } from "./components/SecondPage";
 import { useState } from "react";
 
 function App() {
-  const [userExists, setUserExists] = useState<boolean>(false);
   const [invalidTry, setInvalidTry] = useState<boolean>(false);
   // if user tries to access 2nd page without entering details, 
   // redirect to first page with error message
@@ -20,7 +19,7 @@ function App() {
           <Route
             path="/"
             element={
-              <Form setUserExists={setUserExists} invalidTry={invalidTry} />
+              <Form invalidTry={invalidTry} />
             }
           />
           <Route

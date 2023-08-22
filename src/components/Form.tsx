@@ -7,12 +7,11 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Person } from "../models/Interfaces";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
-  setUserExists: Dispatch<SetStateAction<boolean>>;
   invalidTry: boolean;
 };
 
