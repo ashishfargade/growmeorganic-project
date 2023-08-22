@@ -105,7 +105,7 @@ export const DataDisplay : React.FC = () => {
             </Button>
 
             <Button sx={{ mt: 3 }} variant="contained" onClick={handleClick}>
-              Send
+              Log Data
             </Button>
           </Box>
         </Container>
