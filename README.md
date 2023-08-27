@@ -1,5 +1,7 @@
 ## Vite-MUI Form and Data Table
-#### A project for GrowMeOrganic Pvt. Ltd. that uses no externa library except for MUI
+#### A project for GrowMeOrganic Pvt. Ltd. that uses no external library except for MUI
+
+
 
 ### Technologies Used:
 - Vite.js
